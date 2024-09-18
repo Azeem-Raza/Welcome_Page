@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Welcome_Page</string>
-    <string name="first_name">First Name</string>
-    <string name="sur_name">First Name</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="email_address">Email Address</string>
+    <string name="app_name">Welcome Page</string>
+    <string name="first_name">Enter your First Name</string>
+    <string name="sur_name">Enter your First Name</string>
+    <string name="phone_number">Enter your Phone Number</string>
+    <string name="email_address">Enter your Email Address</string>
+    <string name="submit_button">SUBMIT</string>
 </resources>
