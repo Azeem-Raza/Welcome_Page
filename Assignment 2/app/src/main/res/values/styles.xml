@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here -->
+    </style>
+
+    <!-- Custom dialog theme -->
+    <style name="DialogTheme" parent="Theme.AppCompat.Dialog">
+        <!-- Remove title bar -->
+        <item name="windowNoTitle">true</item>
+        <!-- Optional: Custom width for the dialog -->
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+</resources>
