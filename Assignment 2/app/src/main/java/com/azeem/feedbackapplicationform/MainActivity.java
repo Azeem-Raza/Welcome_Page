@@ -3,36 +3,69 @@ package com.azeem.feedbackapplicationform;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
 public class MainActivity extends AppCompatActivity {
-    String tag="EVH_Demo: ";
+    String tag = "EVH_Demo: ";
+
+    long currentTime = System.currentTimeMillis();  // Store the last event timestamp
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(tag, tag + "onCreate()");
+
+
+        getElapsedTime("onCreate");// Update the last event timestamp
     }
+
+    @Override
     protected void onStart() {
         super.onStart();
-        Log.d(tag, tag + "onStart()");
+
+        getElapsedTime("onStart");  // Update the last event timestamp
     }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(tag, tag + "onReStart()");
+
+        getElapsedTime("onRestart");
+          // Update the last event timestamp
     }
+
+    @Override
     protected void onResume() {
         super.onResume();
-        Log.d(tag, tag + "onResume()");
+
+        getElapsedTime("onResume"); // Update the last event timestamp
     }
+
+    @Override
     protected void onPause() {
         super.onPause();
-        Log.d(tag, tag + "onPause()");
+
+        getElapsedTime("onPause");  // Update the last event timestamp
     }
+
+    @Override
     protected void onStop() {
         super.onStop();
-        Log.d(tag, tag + "onStop()");
+
+        getElapsedTime("onStop");  // Update the last event timestamp
     }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(tag, tag + "onDestroy()");
+
+        getElapsedTime("onDestroy");  // Update the last event timestamp
+    }
+
+    // Helper method to calculate elapsed time
+    private void getElapsedTime(String phase) {
+        long ElapsedTime = System.currentTimeMillis()- currentTime;
+        Log.d(tag, tag + phase+"- Elapsed time: " + ElapsedTime + " ms");
+        currentTime = System.currentTimeMillis();
     }
 }

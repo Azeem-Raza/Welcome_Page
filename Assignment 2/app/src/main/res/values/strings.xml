@@ -3,8 +3,11 @@
     <string name="text">Your Feedback matters!!</string>
     <string name="first_name">Enter Your Firstname</string>
     <string name="last_name">Enter Your Lastname</string>
+    <string name="birth_day">Enter Your Birthday</string>
+    <string name="postal_address">Enter Your Address</string>
+    <string name="email_address">Enter Your Email</string>
     <string name="phone_number">Enter Your Phone Number</string>
-    <string name="comment_text">Enter Your Comment</string>
+
     <string name="send_button">SUBMIT</string>
     <string name="reset_button">RESET</string>
 

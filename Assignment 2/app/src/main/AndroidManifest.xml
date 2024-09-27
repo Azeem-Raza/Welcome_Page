@@ -15,8 +15,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/DialogTheme"> <!-- Apply dialog theme here -->
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,3 +25,5 @@
     </application>
 
 </manifest>
+    <!-- Apply dialog theme here
+                android:theme="@style/Theme.AppCompat.Dialog"-->
