@@ -8,7 +8,21 @@
     <string name="email_address">Enter Your Email</string>
     <string name="phone_number">Enter Your Phone Number</string>
 
+
+
+
+    <string name="first_nameText">Firstname</string>
+    <string name="last_nameText">Lastname</string>
+    <string name="birth_dayText">Birthday</string>
+    <string name="postal_addressText">Address</string>
+    <string name="email_addressText">Email</string>
+    <string name="phone_numberText">Number</string>
+
+
+
+    <string name="random_button">RANDOM</string>
     <string name="send_button">SUBMIT</string>
     <string name="reset_button">RESET</string>
+
 
 </resources>
