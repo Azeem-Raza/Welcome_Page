@@ -1,123 +1,119 @@
 package com.azeem.feedbackapplicationform;
 
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    String tag = "EVH_Demo: ";
 
-    long currentTime = System.currentTimeMillis();  // Store the last event timestamp
+    // UI Elements
+    private EditText firstNameEditText, lastNameEditText, phoneEditText, emailEditText;
+    private TextView randomNumberTextView, lastRandomNumberTextView;
 
-    Button generateButton;
-    TextView generateNo;
-    String currentValue = null;
+    // Random number handling
+    private Handler handler = new Handler();
+    private Random random = new Random();
+    private int lastRandomNumber;
 
+    // State variables
+    private String orientationChangeTime;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        generateNo = findViewById(R.id.generateNo);
-        generateButton = findViewById(R.id.generateButton);
+        initializeViews();
+        startUpdatingRandomNumber();
 
-        // Restore the saved state (if any)
+    //Controlling Screen Orientations
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        // Restore state if activity is recreated (e.g., after orientation change)
         if (savedInstanceState != null) {
-            currentValue = savedInstanceState.getString("currentValue");
-            if (currentValue != null) {
-                generateNo.setText(currentValue);  // Restore the random number
-            }
+            restoreInstanceState(savedInstanceState);
         }
+    }
 
-        generateButton.setOnClickListener(new View.OnClickListener() {
+    // Initialize UI elements
+    private void initializeViews() {
+        firstNameEditText = findViewById(R.id.firstNameEditText);
+        lastNameEditText = findViewById(R.id.SurNameEditText);
+        phoneEditText = findViewById(R.id.PhoneEditText);
+        emailEditText = findViewById(R.id.EmailEditText);
+        randomNumberTextView = findViewById(R.id.randomNumberTextView);
+        lastRandomNumberTextView = findViewById(R.id.lastRandomNumberTextView);
+    }
+
+    // Start updating the random number every second
+    private void startUpdatingRandomNumber() {
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Random random = new Random();
-                int val = random.nextInt(100);  // Generate a random number
-                currentValue = Integer.toString(val);  // Update the current value
-                generateNo.setText(currentValue);  // Set the current value to the TextView
+            public void run() {
+                updateRandomNumber();
+                handler.postDelayed(this, 1000);  // Repeat every second
             }
-        });
-
-
-
-        getElapsedTime("onCreate");// Update the last event timestamp
+        }, 1000);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        getElapsedTime("onStart");  // Update the last event timestamp
+    // Update and display a new random number
+    private void updateRandomNumber() {
+        lastRandomNumber = random.nextInt(100);  // Random number between 0-99
+        randomNumberTextView.setText("Random Number: " + lastRandomNumber);
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
+    // Restore state (form data and random number) if activity is recreated
+    private void restoreInstanceState(Bundle savedInstanceState) {
+        firstNameEditText.setText(savedInstanceState.getString("firstName"));
+        lastNameEditText.setText(savedInstanceState.getString("lastName"));
+        phoneEditText.setText(savedInstanceState.getString("phoneNumber"));
+        emailEditText.setText(savedInstanceState.getString("email"));
 
-        getElapsedTime("onRestart");
-          // Update the last event timestamp
+        // Restore last random number and orientation change time
+        lastRandomNumber = savedInstanceState.getInt("lastRandomNumber");
+        lastRandomNumberTextView.setText("Last Random Number before Orientation: " + lastRandomNumber);
+
+        orientationChangeTime = savedInstanceState.getString("orientationChangeTime");
+        Toast.makeText(this, "Orientation changed at: " + orientationChangeTime, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        getElapsedTime("onResume"); // Update the last event timestamp
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        getElapsedTime("onPause");  // Update the last event timestamp
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        getElapsedTime("onStop");  // Update the last event timestamp
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        getElapsedTime("onDestroy");  // Update the last event timestamp
-    }
-
-    // Save the current value before the activity is destroyed
+    // Save form data and random number on orientation change or activity recreation
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("currentValue", currentValue);  // Save the current random number
+
+        // Save form data
+        outState.putString("firstName", firstNameEditText.getText().toString());
+        outState.putString("lastName", lastNameEditText.getText().toString());
+        outState.putString("phoneNumber", phoneEditText.getText().toString());
+        outState.putString("email", emailEditText.getText().toString());
+
+        // Save random number and orientation change time
+        outState.putInt("lastRandomNumber", lastRandomNumber);
+        outState.putString("orientationChangeTime", getCurrentTimeFormatted());
     }
 
+    // Utility method to get the current time as a formatted string
+    private String getCurrentTimeFormatted() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return sdf.format(new Date());
+    }
 
-    // Restore the saved state when the activity is recreated
+    // Stop updating the random number when the activity is destroyed
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        currentValue = savedInstanceState.getString("currentValue");  // Retrieve the saved number
-        if (currentValue != null) {
-            generateNo.setText(currentValue);  // Display the saved random number
-        }
-    }
-
-    // Helper method to calculate elapsed time
-    private void getElapsedTime(String phase) {
-        long ElapsedTime = System.currentTimeMillis()- currentTime;
-        Log.d(tag, tag + phase+"- Elapsed time: " + ElapsedTime + " ms");
-        currentTime = System.currentTimeMillis();
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);  // Clean up the handler
     }
 }
+

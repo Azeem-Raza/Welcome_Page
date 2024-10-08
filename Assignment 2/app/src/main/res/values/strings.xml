@@ -1,28 +1,14 @@
 <resources>
-    <string name="app_name">Feedback Application Form</string>
-    <string name="text">Your Feedback matters!!</string>
-    <string name="first_name">Enter Your Firstname</string>
-    <string name="last_name">Enter Your Lastname</string>
-    <string name="birth_day">Enter Your Birthday</string>
-    <string name="postal_address">Enter Your Address</string>
-    <string name="email_address">Enter Your Email</string>
-    <string name="phone_number">Enter Your Phone Number</string>
-
-
-
-
-    <string name="first_nameText">Firstname</string>
-    <string name="last_nameText">Lastname</string>
-    <string name="birth_dayText">Birthday</string>
-    <string name="postal_addressText">Address</string>
-    <string name="email_addressText">Email</string>
-    <string name="phone_numberText">Number</string>
-
-
-
-    <string name="random_button">RANDOM</string>
-    <string name="send_button">SUBMIT</string>
-    <string name="reset_button">RESET</string>
+    <string name="app_name">My Application</string>
+    <string name="Welcome_text">Welcome \n</string>
+    <string name="firstName">First Name \n</string>
+    <string name="firstnameedit">enter first name \n</string>
+    <string name="lastName">Last Name\n</string>
+    <string name="EnterLastName">Enter Last Name\n</string>
+    <string name="PhoneNumber">Phone Number\n</string>
+    <string name="EnteryourPhoneNumber">Enter your phone number</string>
+    <string name="EmailAddress">Email Address</string>
+    <string name="EnteryourEmailAddress">Enter email address</string>
 
 
 </resources>
