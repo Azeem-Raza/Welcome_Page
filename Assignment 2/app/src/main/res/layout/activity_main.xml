@@ -1,143 +1,133 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:padding="16dp">
 
-    tools:context=".MainActivity">
-
-    <!-- Company Logo -->
+    <!-- ImageView for logo -->
     <ImageView
-        android:id="@+id/company_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/download__1_"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/text"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="16dp" />
+        android:id="@+id/portrait_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/download__1_" />
 
-    <!-- Title Text -->
+    <!-- First Name Label and EditText -->
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/firstNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text"
-        app:layout_constraintTop_toBottomOf="@id/company_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="8dp" />
-
-    <!-- First Name EditText -->
-    <EditText
-        android:id="@+id/firstName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/first_name"
-        app:layout_constraintTop_toBottomOf="@id/text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="First Name"
+        android:textSize="18sp"
         android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:layout_marginStart="16dp"/>
 
-    <!-- Last Name EditText -->
     <EditText
-        android:id="@+id/lastname"
-        android:layout_width="0dp"
+        android:id="@+id/firstNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/last_name"
-        app:layout_constraintTop_toBottomOf="@id/firstName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:inputType="text"
+        android:hint="Enter First Name"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"/>
 
-    <!-- Birthday EditText -->
-    <EditText
-        android:id="@+id/birthday"
-        android:layout_width="0dp"
+    <!-- Last Name Label and EditText -->
+    <TextView
+        android:id="@+id/surName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/birth_day"
-        android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@id/lastname"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:text="Last Name"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
 
-    <!-- Address EditText -->
     <EditText
-        android:id="@+id/address"
-        android:layout_width="0dp"
+        android:id="@+id/SurNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/postal_address"
-        android:inputType="textPostalAddress"
-        app:layout_constraintTop_toBottomOf="@id/birthday"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:inputType="text"
+        android:hint="Enter Last Name"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"/>
 
-    <!-- Email EditText -->
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="0dp"
+    <!-- Phone Number Label and EditText -->
+    <TextView
+        android:id="@+id/PhoneNumber"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/email_address"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/address"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:text="Phone Number"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
 
-    <!-- Phone Number EditText -->
     <EditText
-        android:id="@+id/phoneNumber"
-        android:layout_width="0dp"
+        android:id="@+id/PhoneEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/phone_number"
         android:inputType="phone"
-        app:layout_constraintTop_toBottomOf="@id/email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:hint="Enter Phone Number"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Email Address Label and EditText -->
+    <TextView
+        android:id="@+id/EmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email Address"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/EmailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="Enter Email Address"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Random Number TextView -->
+    <TextView
+        android:id="@+id/randomNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Random Number: 0"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center" />
+
+    <!-- Last Random Number TextView -->
+    <TextView
+        android:id="@+id/lastRandomNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Random Number before Orientation: 0"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center" />
 
     <!-- Submit Button -->
     <Button
-        android:id="@+id/sendButton"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/send_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/resetButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
-
-    <!-- Reset Button -->
-    <Button
-        android:id="@+id/resetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/reset_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sendButton"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintHorizontal_bias="0.5" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Submit"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginTop="24dp"
+        android:onClick="buttonClick" />
+</LinearLayout>
